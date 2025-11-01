@@ -41,12 +41,12 @@ Look into [this directory](src/).
 ## Dependencies
 Only my own extensions.. you need to create your own polyfill(s);
 e.g. an `xml.js` for entity conversion, my [`getopt.js`](https://github.com/kekse1/getopt.js/),
-or my [`ansi.js`](https://github.com/kekse1/ansi.js/); etc.. **^\_^**
+or my [`ansi.js`](https://github.com/kekse1/ansi.js/); etc..
 
 > [!IMPORTANT]
 > I assume you want to use the [Wikimedia Dumps](https://dumps.wikimedia.org/) for your own A.I. work
 > or smth. like this.. then you should be able to implement any necessary code. This repository is
-> meant to be a place for most of the data processing code! ...
+> meant to be a place for most of the data processing/conversion code! ...
 
 <br><br><br>
 
