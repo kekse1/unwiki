@@ -6,6 +6,7 @@
 //
 const DEFAULT_FILTER_HTML = true;
 const DEFAULT_FILTER_SPECIAL = true;
+const DEFAULT_FILTER_BRACKETS = true;
 
 const DEFAULT_ARTICLE_SEP = 10;
 const DEFAULT_BUFFER_SIZE = (1024 * 64);
@@ -35,6 +36,7 @@ class Data extends Quant
 
 		this.htmlFilter = DEFAULT_FILTER_HTML;
 		this.specialFilter = DEFAULT_FILTER_SPECIAL;
+		this.bracketFilter = DEFAULT_FILTER_BRACKETS;
 		this.articleSeparator = DEFAULT_ARTICLE_SEP;
 		this.bufferSize = DEFAULT_BUFFER_SIZE;
 		this.round = DEFAULT_ROUND;
@@ -57,6 +59,12 @@ class Data extends Quant
 			{
 				this.specialFilter =
 					_args[i].special;
+			}
+
+			if(bool(_args[i].brackets))
+			{
+				this.bracketFilter =
+					_args[i].brackets;
 			}
 			
 			if(string(_args[i].separator, true))
@@ -379,14 +387,19 @@ class Data extends Quant
 	{
 		_item = this.convertEntities(_item.trim());
 
-		if((_item = _item.trim()) && this.htmlFilter)
+		if(_item && this.htmlFilter)
 		{
 			_item = this.filterHTML(_item);
 		}
 
-		if((_item = _item.trim()) && this.specialFilter)
+		if(_item && this.specialFilter)
 		{
 			_item = this.filterSpecial(_item);
+		}
+
+		if(_item && this.bracketFilter)
+		{
+			_item = this.filterBrackets(_item);
 		}
 
 		return _item;
@@ -476,10 +489,10 @@ class Data extends Quant
 			}
 		}
 
-		return result;
+		return result.trim();
 	}
 
-	static get ignoreSpecialTags()
+	static get ignoreBrackets()
 	{
 		return [
 			'File',
@@ -490,9 +503,9 @@ class Data extends Quant
 		];
 	}
 
-	filterSpecial(_item)
+	filterBrackets(_item)
 	{
-		const	ignoreTags = this.constructor.ignoreSpecialTags;
+		const	ignoreBrackets = this.constructor.ignoreBrackets;
 		var	result = '', firstChar = '', sub, ign;
 
 		loop: for(var i = 0; i < _item.length; ++i)
@@ -535,7 +548,7 @@ class Data extends Quant
 					}
 					else if(_item[i] === ':')
 					{
-						if(ignoreTags.includes(sub))
+						if(ignoreBrackets.includes(sub))
 						{
 							ign = true;
 							sub = '';
@@ -608,7 +621,27 @@ class Data extends Quant
 					sub = '';
 				}
 			}
-			else if(_item[i] === '\n')
+			else
+			{
+				result += _item[i];
+			}
+		}
+
+		if((result = result.trim()).toUpperCase() === result)
+		{
+			return '';
+		}
+
+		return result;
+	}
+
+	filterSpecial(_item)
+	{
+		var result = '', firstChar;
+
+		loop: for(var i = 0; i < _item.length; ++i)
+		{
+			if(_item[i] === '\n')
 			{
 				firstChar = (_item[i + 1] || '');
 
@@ -616,15 +649,12 @@ class Data extends Quant
 				{
 					case '*':
 						result += '\n\n* ';
-						++i;
 						break;
 					case ':':
 						result += '; ';
-						i += 2;
 						break;
 					case '=':
 						result += '\n\n';
-						++i;
 						break;
 					default:
 						result += '\n';
@@ -646,12 +676,7 @@ class Data extends Quant
 			}
 		}
 
-		if(result.toUpperCase() === result)
-		{
-			return '';
-		}
-
-		return result;
+		return result.trim();
 	}
 
 	convertEntities(_item)
@@ -682,7 +707,7 @@ class Data extends Quant
 			}
 		}
 
-		return result;
+		return result.trim();
 	}
 
 	writeArticle(_item)

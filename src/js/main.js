@@ -23,6 +23,7 @@ const syntax = (_exit = 255) => {
 	console.info(EOL + '\tSyntax: $0 < input.XML > < output.TXT >' + EOL);
 	console.log('\t\t     --help'.warn(true).bold(true) + EOL);
 	console.log('\t\t     --html'.warn(true) + '\tBoolean'.error(true));
+	console.log('\t\t --brackets'.warn(true) + '\tBoolean'.error(true));
 	console.log('\t\t  --special'.warn(true) + '\tBoolean'.error(true));
 	console.log('\t\t--separator'.warn(true) + '\tInteger'.error(true) + '/'.debug(true) + 'String'.error(true));
 	console.log('\t\t   --buffer'.warn(true) + '\tInteger'.error(true));
@@ -93,6 +94,11 @@ if(bool(tmp = opts.get('special')))
 	options.special = tmp;
 }
 
+if(bool(tmp = opts.get('brackets')))
+{
+	options.brackets = tmp;
+}
+
 if(string(tmp = opts.get('encoding'), false))
 {
 	options.encoding = tmp;
@@ -134,9 +140,9 @@ xml.once('ready', () => {
 	data.on('article', (_e) => {
 		const func = ((_e.count % 2) ? 'error' : 'warn');
 		const infoLine = 'New article '.defaultFG(true) + '#'.info(true).bold(true) +
-			_e.count.toLocaleString().bold(true)[func](true) + '\t'.debug(true) +
-			Math.size.styled(_e.size).pad(16, ' ', true).defaultFG(true) +
-			'; total { '.debug(true) + 'read'.defaultFG(true) + ': '.debug(true) +
+			_e.count.toLocaleString().bold(true)[func](true) + '  '.debug(true) +
+			Math.size.styled(_e.size).defaultFG(true) + '; total { '.
+			debug(true) + 'read'.defaultFG(true) + ': '.debug(true) +
 			Math.size.styled(_e.total.read).warn(true) + ', '.debug(true) +
 			'written'.defaultFG(true) + ': '.debug(true) + Math.size.styled(
 			_e.total.written).error(true) + ' } ... '.debug(true) +

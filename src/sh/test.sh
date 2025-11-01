@@ -17,6 +17,7 @@ _output="test.txt"
 # these are passed 'as is'..
 _html=yes
 _special=yes
+_brackets=yes
 _separator=10
 _buffer=$((1024*64))
 _encoding="utf8"
@@ -87,6 +88,6 @@ if [[ $exists -ne 0 ]]; then
 fi
 
 
-cmd="$(which node) '${dir}/main.js' '${_input}' '${_output}' --html ${_html} --special ${_special} --separator '${_separator}' --buffer ${_buffer} --encoding '${_encoding}' --round ${_round}"
+cmd="$(which node) '${dir}/main.js' '${_input}' '${_output}' --html ${_html} --special ${_special} --brackets ${_brackets} --separator '${_separator}' --buffer ${_buffer} --encoding '${_encoding}' --round ${_round}"
 echo -e "\t\`${cmd}\`\n"; [[ $_SIMULATE -eq 0 ]] && eval "$cmd"
 
