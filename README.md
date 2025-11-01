@@ -15,6 +15,10 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 
 <br>
 
+## Status
+This is still **TODO**, even if it works great right now. I'm going to test it more..
+don't know if every code/syntax is handled "the"[tm] best way.
+
 ## Description/Features
 This list describes all (possible) operations:
 
