@@ -34,11 +34,7 @@ to see kinda 'help' (the syntax and possible parameters).
 
 
 ## Source
-* [JavaScript](src/js/field.js) \[Version v**1.0.0**; Last update: **2025-03-12**\];
-* [Bash Shell](src/sh/field.sh) \[Version v**1.0.0**; Last update: **2025-03-12**\];
-
-> [!NOTE]
-> The JavaScript variant is a bit bigger, and calculates with `BigInt`.
+Look into [this directory](src/).
 
 <br>
 
