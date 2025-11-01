@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+# 
+# Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
+# https://kekse.biz/
+# v0.1.0
+#
+
 #
 # only to test this script!!1
 # ... set to (0) for real production phase.. ^_^
