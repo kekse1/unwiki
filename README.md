@@ -20,8 +20,8 @@ This list describes all (possible) operations:
 
 - [x] First it'll extract the article bodies out of the `.xml` structure (see `<text>`)
 - [x] All of the [**HTML entities**](https://html.spec.whatwg.org/entities.json) will be converted to real HTML code;
-- [x] Then it'll (optionally) change the HTML code (see `filterHTML(..)`);
-- [x] Also it'll (optionally) convert some of the **special syntax** to 'nice looking' code/text;
+- [x] Then it'll (optionally) change the HTML code (see `.filterHTML(..)`);
+- [x] Also it'll (optionally) convert some of the **special syntax** to 'nice looking' code/text (see `.filterSpecial(..)`);
 - [x] For every article there'll be a **direct** write operation (to clean the buffer and flush all new data)
 
 For more info about the real filtering algorithms see the [`data.js`](src/js/data.js).
