@@ -5,6 +5,7 @@
 
 //
 const DEFAULT_DISABLE_SPECIAL = true;
+const DEFAULT_DISABLE_BRACKETS = true;
 
 const DEFAULT_FILTER_HTML = true;
 const DEFAULT_FILTER_SPECIAL = true;
@@ -105,6 +106,16 @@ class Data extends Quant
 			}
 
 			_args.splice(i--, 1);
+		}
+
+		if(DEFAULT_DISABLE_SPECIAL)
+		{
+			this.specialFilter = null;
+		}
+
+		if(DEFAULT_DISABLE_BRACKETS)
+		{
+			this.bracketFilter = null;
 		}
 
 		if(int(this.articleSeparator))
@@ -639,11 +650,6 @@ class Data extends Quant
 
 	filterSpecial(_item)
 	{
-		if(DEFAULT_DISABLE_SPECIAL)
-		{
-			return _item.trim();
-		}
-
 		var result = '', firstChar;
 
 		loop: for(var i = 0; i < _item.length; ++i)

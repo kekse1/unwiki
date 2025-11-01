@@ -17,7 +17,9 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 
 ## Status
 This is still **TODO**, even if it works great right now. I'm going to test it more..
-don't know if every code/syntax is handled "the"[tm] best way.
+
+Atm. some things aren't parsed the best[tm] way (see `DEFAULT_DISABLE_*`);
+I'll fix it next week.
 
 ## Description/Features
 This list describes all (possible) operations:
