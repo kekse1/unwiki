@@ -3,7 +3,6 @@
 # 
 # Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
 # https://kekse.biz/
-# v0.1.0
 #
 
 #
