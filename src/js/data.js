@@ -4,9 +4,13 @@
  */
 
 //
-const DEFAULT_DISABLE_SPECIAL = true;
-const DEFAULT_DISABLE_BRACKETS = true;
+const DEBUG_DISABLE_SPECIAL = true;
+const DEBUG_DISABLE_BRACKETS = true;
 
+//
+const DEFAULT_START = false;
+
+//
 const DEFAULT_FILTER_HTML = true;
 const DEFAULT_FILTER_SPECIAL = true;
 const DEFAULT_FILTER_BRACKETS = true;
@@ -108,13 +112,25 @@ class Data extends Quant
 			_args.splice(i--, 1);
 		}
 
-		if(DEFAULT_DISABLE_SPECIAL)
+		if(DEBUG_DISABLE_SPECIAL)
 		{
+			if(this.specialFilter)
+			{
+				console.warn('Special filter is ' +
+					'disabled'.error(true) + ' by debug code.');
+			}
+
 			this.specialFilter = null;
 		}
 
-		if(DEFAULT_DISABLE_BRACKETS)
+		if(DEBUG_DISABLE_BRACKETS)
 		{
+			if(this.bracketFilter)
+			{
+				console.warn('Bracket filter is ' +
+					'disabled'.error(true) + ' by debug code.');
+			}
+
 			this.bracketFilter = null;
 		}
 
@@ -126,15 +142,23 @@ class Data extends Quant
 
 		setImmediate(() => {
 			this.reset();
+
+			const start = () => {
+				this.args = _args;
+
+				if(DEFAULT_START)
+				{
+					this.start(_args);
+				}
+			};
 			
 			if(this.xml.hasEntities)
 			{
-				this.start(... _args);
+				start();
 			}
 			else if(this.xml.entitiesPath)
 			{
-				this.xml.once('load', () => this.
-					start(... _args));
+				this.xml.once('load', start);
 			}
 			else
 			{
@@ -150,6 +174,11 @@ class Data extends Quant
 				}
 			}
 		});
+	}
+
+	start(_args = this.args)
+	{
+		return this.realStart(... _args);
 	}
 
 	info()
@@ -168,7 +197,7 @@ class Data extends Quant
 			tag: '' };
 	}
 
-	start(... _args)
+	realStart(... _args)
 	{
 		var inputPath = null, outputPath = null;
 
@@ -694,7 +723,26 @@ class Data extends Quant
 
 	convertEntities(_item)
 	{
-		var result = '', entity = '';
+		const SPECIAL = '&amp;nbsp;';
+		const SPECIAL_INC = (SPECIAL.length - 1);
+
+		var result = '';
+
+		for(var i = 0; i < _item.length; ++i)
+		{
+			if(_item.at(i, SPECIAL, false))
+			{
+				result += ' ';
+				i += SPECIAL_INC;
+			}
+			else
+			{
+				result += _item[i];
+			}
+		}
+
+		_item = result.trim();
+		result = ''; var entity = '';
 
 		for(var i = 0; i < _item.length; ++i)
 		{

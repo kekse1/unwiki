@@ -9,6 +9,9 @@
  */
 
 //
+const DEFAULT_SECONDS = 4;
+
+//
 import * as globals from '../shared/globals.js';
 import * as server from '../shared/server.js';
 import XML from '../shared/xml.js';
@@ -139,20 +142,24 @@ xml.once('ready', () => {
 	});
 	data.on('article', (_e) => {
 		const func = ((_e.count % 2) ? 'error' : 'warn');
-		const infoLine = 'New article '.defaultFG(true) + '#'.info(true).bold(true) +
-			_e.count.toLocaleString().bold(true)[func](true) + '  '.debug(true) +
-			Math.size.styled(_e.size).defaultFG(true) + '; total { '.
+		const infoLine = _e.total.percent.pad(-8, ' ', true).bold(true).
+			info(true) + 'New article '.defaultFG(true) + '#'.info(true).
+			bold(true) + _e.count.toLocaleString().bold(true)[func](true) +
+			'  ' + Math.size.styled(_e.size).defaultFG(true) + '; total { '.
 			debug(true) + 'read'.defaultFG(true) + ': '.debug(true) +
 			Math.size.styled(_e.total.read).warn(true) + ', '.debug(true) +
 			'written'.defaultFG(true) + ': '.debug(true) + Math.size.styled(
-			_e.total.written).error(true) + ' } ... '.debug(true) +
-			_e.total.percent.bold(true).info(true);
+			_e.total.written).error(true) + ' };'.debug(true);
 		console.log(infoLine);
 	});
 	data.once('error', (_err) => {
 		console.error(_err);
 		process.exit(234);
 	});
+	console.error('\nStarting in ' + DEFAULT_SECONDS.toLocaleString().info(true) +
+		' seconds'.warn(true) + '!'.error(true));
+	setTimeout(() => data.start(),
+		(DEFAULT_SECONDS * 1000));
 });
 
 xml.once('error', (_path) => {
