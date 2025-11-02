@@ -8,6 +8,9 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 > [!TIP]
 > **JFYI**: [`download-wiki-dumps.sh`](https://github.com/kekse1/scripts/?#download-wiki-dumpssh)
 
+> [!WARNING]
+> This is my personal example for messy code.. xD~
+
 <br><br>
 
 ## News
