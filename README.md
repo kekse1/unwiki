@@ -11,21 +11,13 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 > [!WARNING]
 > This is my personal example for messy code.. xD~
 
-<br><br>
+<br>
 
 ## News
 * \[**2025-11-02**\] Also published my [`xml.js`](#xml) here. Plus some small changes.
 * \[**2025-11-01**\] Initially published this script here.
 
-<br>
-
-## Status
-This is still **TODO**, even if it works great right now. I'm going to test it more..
-
-Atm. some things aren't parsed the best[tm] way (see `DEBUG_DISABLE_*`); and I could
-convert the bracket syntax `{|` etc. to real tables and more.. maybe.
-
-I'll fix some things next week.
+<br><br>
 
 ## Description/Features
 This list describes all (possible) operations:
@@ -44,16 +36,34 @@ For more info about the real filtering algorithms see the [`data.js`](src/js/dat
 Try to run the [main script](src/js/main.js) without any command line parameters
 to see kinda 'help' (the syntax and possible parameters).
 
+> [!WARNING]
+> The article extraction (out of pure XML structure) really works great, and also the
+> entity conversion. But I'm not sure with the filtering functions.. the current results
+> look really good (clean and nice looking language, ..) - but I'll have to inspect the
+> used syntax better (mostly brackets like `[[` etc.)!!
+
+<br>
 
 ## Source
-Look into [this directory](src/).
+Look into [this source directory](./src/).
+
+There [**JavaScript**](https://node.js/) source is divided into the
+[main startup script](./src/js/main.js) (and should be executable `+x`,
+or called w/ the `node` interpreter), and the important part is in the
+[`data.js`](./src/js/data.js) (`class extends EventEmitter`). ..etc.
+
+<br>
 
 ### XML
 Now I also included my (merely untested) [`xml.js`](src/js/xml.js).
-This is for the entity conversion (and depends on the official
-[`entitites.json`](https://html.spec.whatwg.org/entities.json)).
 
-Only a part of this class is being used here - the rest is not \*that\* 'clean'..!
+This is for the entity conversion (and depends on the official
+[`entitites.json`](https://html.spec.whatwg.org/entities.json),
+which is being loaded in there).
+
+Only a part of this class is being used here. The rest is not \*that\*
+'clean' code (used for parsing data - which is done **here** in my
+[`data.js`](./src/js/data.js) instead).
 
 <br>
 
@@ -63,9 +73,10 @@ e.g. an `xml.js` for entity conversion, my [`getopt.js`](https://github.com/keks
 or my [`ansi.js`](https://github.com/kekse1/ansi.js/); etc..
 
 > [!IMPORTANT]
-> I assume you want to use the [Wikimedia Dumps](https://dumps.wikimedia.org/) for your own A.I. work
-> or smth. like this.. then you should be able to implement any necessary code. This repository is
-> meant to be a place for most of the data processing/conversion code! ...
+> I assume you want to use the [Wikimedia Dumps](https://dumps.wikimedia.org/)
+> for your own A.I. work or smth. like this.. then you should be able to implement
+> any necessary code. This repository is meant to be a place for most of the data
+> processing/conversion code! ...
 
 <br><br><br>
 
