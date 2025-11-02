@@ -50,6 +50,8 @@ Now I also included my (merely untested) [`xml.js`](src/js/xml.js).
 This is for the entity conversion (and depends on the official
 [`entitites.json`](https://html.spec.whatwg.org/entities.json)).
 
+Only a part of this class is being used here - the rest is not \*that\* 'clean'..!
+
 <br>
 
 ## Dependencies
