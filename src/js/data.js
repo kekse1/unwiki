@@ -832,6 +832,7 @@ class Data extends Quant
 			{
 				continue;
 			}
+			// are u sure?
 			else if(_chunk[i] === '\'')
 			{
 				continue;
