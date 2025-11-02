@@ -1,8 +1,18 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
- * https://norbert.com.es/
+ * https://kekse.biz/
  */
 
+/*
+ * todo: better filtering.. i can only promise that
+ * the extraction of articles and the entity conversion
+ * work the right way atm.
+ */
+
+//
+//i'm not sure the filtering worx correctly..
+//so i disabled them by default (below),
+//and this is additional for also a warning.
 //
 const DEBUG_DISABLE_SPECIAL = true;
 const DEBUG_DISABLE_BRACKETS = true;
@@ -11,9 +21,9 @@ const DEBUG_DISABLE_BRACKETS = true;
 const DEFAULT_START = false;
 
 //
-const DEFAULT_FILTER_HTML = true;
-const DEFAULT_FILTER_SPECIAL = true;
-const DEFAULT_FILTER_BRACKETS = true;
+const DEFAULT_FILTER_HTML = false;
+const DEFAULT_FILTER_SPECIAL = false;
+const DEFAULT_FILTER_BRACKETS = false;
 
 const DEFAULT_ARTICLE_SEP = 10;
 const DEFAULT_BUFFER_SIZE = (1024 * 64);
@@ -832,7 +842,6 @@ class Data extends Quant
 			{
 				continue;
 			}
-			// are u sure?
 			else if(_chunk[i] === '\'')
 			{
 				continue;

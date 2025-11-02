@@ -14,7 +14,7 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 <br><br>
 
 ## News
-* \[**2025-11-02**\] Also published my [`xml.js`](#xml) here
+* \[**2025-11-02**\] Also published my [`xml.js`](#xml) here. Plus some small changes.
 * \[**2025-11-01**\] Initially published this script here.
 
 <br>

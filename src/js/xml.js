@@ -1,11 +1,12 @@
 /*
  * Copyright (c) Sebastian Kucharczyk <kuchen@kekse.biz>
- * https://norbert.com.es/
+ * https://kekse.biz/
  */
 
 /*
  *
- * SIEHE < https://html.spec.whatwg.org/entities.json > ..! ;-)
+ * https://html.spec.whatwg.org/entities.json
+ * .. for non-numeric entities
  *
  */
 
@@ -70,6 +71,7 @@ class XML extends EventEmitter
 		this.reset();
 	}
 
+	// a minimum
 	static get escapeChars()
 	{
 		return [
@@ -512,7 +514,7 @@ class XML extends EventEmitter
 			buffer = '';
 		}
 		
-		aEntity = (_value) => {
+		const aEntity = (_value) => {
 			if(_callback)
 			{
 				if(string(_value))
@@ -538,7 +540,7 @@ class XML extends EventEmitter
 			return entity;
 		};
 
-		aBuffer = (_value) => {
+		const aBuffer = (_value) => {
 			if(_callback)
 			{
 				if(string(_value))
@@ -564,7 +566,7 @@ class XML extends EventEmitter
 			return buffer;
 		};
 
-		append = (_item) => {
+		const append = (_item) => {
 			if(!_callback)
 			{
 				return result.push(_item);
