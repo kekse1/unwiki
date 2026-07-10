@@ -1,9 +1,9 @@
 <img src="https://kekse.biz/github.php?draw&override=github:unwiki" />
 
-<br>
-
 # `unwiki`
 Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plain`** files.
+
+<br>
 
 > [!TIP]
 > **JFYI**: [`download-wiki-dumps.sh`](https://github.com/kekse1/scripts/?#download-wiki-dumpssh)
@@ -11,13 +11,13 @@ Converts the [Wikimedia Dumps](https://dumps.wikimedia.org/) to big **`text/plai
 > [!WARNING]
 > This is my personal example for messy code.. xD~
 
-<br>
+<br><br>
 
 ## News
 * \[**2025-11-02**\] Also published my [`xml.js`](#xml) here. Plus some small changes.
 * \[**2025-11-01**\] Initially published this script here.
 
-<br><br>
+<br><br><br>
 
 ## Description/Features
 This list describes all (possible) operations:
@@ -82,6 +82,8 @@ or my [`ansi.js`](https://github.com/kekse1/ansi.js/); etc..
 
 # Contact
 <img src="https://kekse.biz/github.php?override=github:unwiki&draw&text=unwiki@kekse.biz&angle=6&size=38pt&fg=150,20,90&font=OpenSans&ro&readonly&h=64&v=16" />
+
+<br>
 
 # Copyright and License
 The Copyright is [(c) Sebastian Kucharczyk](./COPYRIGHT.txt),
